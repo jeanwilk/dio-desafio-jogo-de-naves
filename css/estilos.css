@@ -37,7 +37,6 @@ body {
 	left:8px;
 	top:179px;
     background-image:url(../imgs/apache.png);
-
 }
 
 #inimigo1 {
@@ -47,7 +46,6 @@ body {
 	left: 689px;
 	top: 253px;
 	background-image:url(../imgs/inimigo1.png);
-	
 }
 
 #inimigo2 {
@@ -77,7 +75,7 @@ body {
  	margin-top:100px;
 	text-align:center;
 	padding:10px;
-
+	cursor: pointer;
 }
 
 .anima1 {
@@ -249,11 +247,15 @@ h3 {
 
 #fim {
 	width:350px;
-	height:200px;
+	height:250px;
 	background-color:#FFF;
  	margin-left:auto;
 	margin-right:auto;
  	margin-top:100px;
 	text-align:center;
 	padding:10px;
+}
+
+#reinicia {
+	cursor: pointer;
 }
