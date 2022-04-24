@@ -218,7 +218,7 @@ body {
 }
 
 #placar {
-	width: 450px;
+	width: 550px;
 	height: 50px;
 	position: absolute;
 	left: 5px;
@@ -247,7 +247,7 @@ h3 {
 
 #fim {
 	width:350px;
-	height:250px;
+	height:280px;
 	background-color:#FFF;
  	margin-left:auto;
 	margin-right:auto;

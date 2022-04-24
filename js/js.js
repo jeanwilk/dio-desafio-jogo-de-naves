@@ -15,6 +15,9 @@ function start() { // Inicio da função start()
 	var pontos=0;
 	var salvos=0;
 	var perdidos=0;
+	var pontosSalvos=0;
+	var pontosPerdidos=0;
+	var totalDePontos=0;
 	var energiaAtual=3;
 	var jogo = {};
 	var velocidade=4;
@@ -117,7 +120,7 @@ function start() { // Inicio da função start()
 
 	function moveamigo() {
 		posicaoX = parseInt($("#amigo").css("left"));
-		$("#amigo").css("left",posicaoX+1);
+		$("#amigo").css("left",posicaoX+(velocidade-3));
 					
 		if (posicaoX>906) {
 			$("#amigo").css("left",0);
@@ -190,6 +193,7 @@ function start() { // Inicio da função start()
 		if (colisao3.length>0) {
 			velocidade=velocidade+0.3;
 			pontos=pontos+100;
+			totalDePontos+=100;
 			inimigo1X = parseInt($("#inimigo1").css("left"));
 			inimigo1Y = parseInt($("#inimigo1").css("top"));
 				
@@ -205,6 +209,7 @@ function start() { // Inicio da função start()
 		if (colisao4.length>0) {
 			velocidade=velocidade+0.3;
 			pontos=pontos+50;
+			totalDePontos+=50;
 			inimigo2X = parseInt($("#inimigo2").css("left"));
 			inimigo2Y = parseInt($("#inimigo2").css("top"));
 			$("#inimigo2").remove();
@@ -218,6 +223,8 @@ function start() { // Inicio da função start()
 		// jogador com o amigo
 		if (colisao5.length>0) {
 			salvos++;
+			pontosSalvos+=150;
+			totalDePontos+=150;
 			somResgate.play();
 			reposicionaAmigo();
 			$("#amigo").remove();
@@ -226,6 +233,8 @@ function start() { // Inicio da função start()
 		//Inimigo2 com o amigo	
 		if (colisao6.length>0) {
 			perdidos++;	
+			pontosPerdidos-=150;
+			totalDePontos-=150;
 			amigoX = parseInt($("#amigo").css("left"));
 			amigoY = parseInt($("#amigo").css("top"));
 			explosao3(amigoX,amigoY);
@@ -320,7 +329,7 @@ function start() { // Inicio da função start()
 	} // Fim da função explosao3
 
 	function placar() {
-		$("#placar").html("<h2> Pontos: " + pontos + " Salvos: " + salvos + " Perdidos: " + perdidos + "</h2>");
+		$("#placar").html("<h2> Pontos de abate: " + pontos + ", Salvos: " + salvos + ", Perdidos: " + perdidos + "</h2>");
 	} //fim da função placar()
 
 	//Barra de energia
@@ -367,7 +376,7 @@ function start() { // Inicio da função start()
 		
 		$("#fundoGame").append("<div id='fim'></div>");
 		
-		$("#fim").html("<h1> Game Over </h1><p>Sua pontuação foi: " + pontos + "</p>" + "<p>O total de salvos foram: " + salvos + "</p>" + "<p>O total de perdidos foram: " + perdidos + "</p>" + "<div id='reinicia' onClick=reiniciaJogo()><h3>Jogar Novamente</h3></div>");
+		$("#fim").html("<h1> Game Over </h1><p>Pontos de abate: " + pontos + "</p>" + "<p>"+ salvos + " Amigos salvo(s) = " + pontosSalvos + " pontos.</p>" + "<p>"+ perdidos + " Amigos perdido(s) = " + pontosPerdidos + " pontos.</p>" + "<p>Sua pontuação total foi: " + totalDePontos + ".</p>" + "<div id='reinicia' onClick=reiniciaJogo()><h3>Jogar Novamente</h3></div>");
 	} // Fim da função gameOver();
 
 } // Fim da função start
